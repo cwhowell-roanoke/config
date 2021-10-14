@@ -334,6 +334,12 @@ globalkeys = gears.table.join(
     end,
     {description = "run dmenu prompt", group = "launcher"}),
     
+    -- Config
+    awful.key({ modkey },            "c",     function () 
+    awful.util.spawn(editor_cmd .. " " .. awesome.conffile) 
+    end,
+    {description = "Edit Config", group = "awesome"}),
+
     -- Firefox
     awful.key({ modkey },            "b",     function () 
     awful.util.spawn("firefox") 
