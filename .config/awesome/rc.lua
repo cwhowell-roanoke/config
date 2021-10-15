@@ -332,7 +332,7 @@ globalkeys = gears.table.join(
     
     -- Dmenu prompt
     awful.key({ modkey },            "r",     function () 
-    awful.util.spawn("dmenu_run") 
+    awful.util.spawn("dmenu_run -i -nb '#292d3e' -nf '#ffffff' -sb '#ff0000' -fn 'UbuntuMono Nerd Font:bold:pixelsize=14'") 
     end,
     {description = "run dmenu prompt", group = "launcher"}),
     
