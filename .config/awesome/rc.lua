@@ -609,5 +609,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart Applications
 awful.spawn.with_shell('compton')         -- Transparency
 awful.spawn.with_shell('nitrogen          --restore') -- Wallpaper
-awful.spawn.with_shell('nm-tray')         -- Network Manager Tray Icon
+awful.spawn.with_shell('nm-applet')       -- Network Manager Applet
 awful.spawn.with_shell('volumeicon-alsa') -- Volume Icon
