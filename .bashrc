@@ -14,7 +14,7 @@ alias rm='rm -i'
 alias rmr='rm -ir'
 alias cp='cp -i'
 alias ..='cd ..'
-alias install='sudo apt install'
+alias install='sudo apt install -y'
 alias aconfig='nano ~/.config/awesome/rc.lua'
 alias rb='source .bashrc'
 ##############
@@ -126,3 +126,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# ========= CUSTOM AUTORUNS ==========
+neofetch
