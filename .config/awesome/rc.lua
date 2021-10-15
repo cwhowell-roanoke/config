@@ -328,6 +328,8 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
+    -- ================ Custom Keys ================
+    
     -- Dmenu prompt
     awful.key({ modkey },            "r",     function () 
     awful.util.spawn("dmenu_run") 
@@ -338,13 +340,19 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "c",     function () 
     awful.util.spawn(editor_cmd .. " " .. awesome.conffile) 
     end,
-    {description = "Edit Config", group = "awesome"}),
+    {description = "edit Config", group = "awesome"}),
 
     -- Firefox
     awful.key({ modkey },            "b",     function () 
     awful.util.spawn("firefox") 
     end,
     {description = "open browser", group = "applications"}),
+
+    -- Random Background/Wallpaper
+    awful.key({ modkey, "Control" }, "b",     function () 
+    awful.util.spawn("nitrogen --set-scaled --random") 
+    end,
+    {description = "set a random background", group = "screen"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -356,6 +364,7 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
