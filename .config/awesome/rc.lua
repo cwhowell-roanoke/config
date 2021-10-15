@@ -299,9 +299,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
@@ -332,8 +332,8 @@ globalkeys = gears.table.join(
     
     -- Dmenu prompt
     awful.key({ modkey },            "r",     function () 
-    awful.util.spawn("dmenu_run -i -nb '#292d3e' -nf '#ffffff' -sb '#ff0000' -fn 'UbuntuMono Nerd Font:bold:pixelsize=14'") 
-    end,
+    awful.util.spawn("dmenu_run -i -nb '#292d3e' -nf '#ffffff' -sb '#ff0000' -fn 'UbuntuMono Nerd Font:bold:pixelsize=16'",
+                     beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus)    end,
     {description = "run dmenu prompt", group = "launcher"}),
     
     -- Config
@@ -531,7 +531,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -569,7 +569,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    awful.titlebar(c, {size = 21}) : setup {
         { -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
@@ -607,5 +607,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 -- Autostart Applications
-awful.spawn.with_shell('compton') -- Transparency
-awful.spawn.with_shell('nitrogen --restore') -- Wallpaper
+awful.spawn.with_shell('compton')         -- Transparency
+awful.spawn.with_shell('nitrogen          --restore') -- Wallpaper
+awful.spawn.with_shell('nm-tray')         -- Network Manager Tray Icon
+awful.spawn.with_shell('volumeicon-alsa') -- Volume Icon
